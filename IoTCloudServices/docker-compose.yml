@@ -1,0 +1,88 @@
+version: '3'
+services:
+  mosquitto:
+    build: ./mosquitto
+    ports:
+      - "1883:1883"
+    volumes:
+      - "./mosquitto/code/mosquitto.conf:/etc/mosquitto/mosquitto.conf"
+
+
+  message_router:
+    build: ./message_router
+    environment:
+      - MQTT_SERVER_ADDRESS=mosquitto
+      - MQTT_SERVER_PORT=1883
+      - VEHICLES_MICROSERVICE_ADDRESS=vehicles_microservice
+      - VEHICLES_MICROSERVICE_PORT=5001
+      - TELEMETRY_MICROSERVICE_ADDRESS=telemetry_microservice
+      - TELEMETRY_MICROSERVICE_PORT=5002
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - "./message_router/code:/etc/usr/src/app"
+    depends_on:
+      - mosquitto
+
+  db_service:
+    build: ./db_service
+    environment:
+      - MYSQL_ROOT_PASSWORD=pass
+    ports:
+      - '3306:3306'
+
+  vehicles_microservice:
+    build: ./microservices/vehicles_microservice
+    ports:
+      - '5001:5001'
+    links:
+      - "db_service:db_service"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=5001
+      - DBHOST=db_service
+      - DBUSER=root
+      - DBPASSWORD=pass
+      - DBDATABASE=fic_data
+    volumes:
+      - "./microservices/vehicles_microservice/code:/etc/usr/src/app"
+    depends_on:
+      - db_service
+
+  telemetry_microservice:
+    build: ./microservices/telemetry_microservice
+    ports:
+      - '5002:5002'
+    links:
+      - "db_service:db_service"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=5002
+      - DBHOST=db_service
+      - DBUSER=root
+      - DBPASSWORD=pass
+      - DBDATABASE=fic_data
+    volumes:
+      - "./microservices/telemetry_microservice/code:/etc/usr/src/app"
+    depends_on:
+      - db_service
+
+  routes_microservice:
+    build: ./microservices/routes_microservice
+    ports:
+      - '5003:5003'
+    links:
+      - "db_service:db_service"
+      - "message_router:message_router"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=5003
+      - DBHOST=db_service
+      - DBUSER=root
+      - DBPASSWORD=pass
+      - DBDATABASE=fic_data
+      - MESSAGE_ROUTER_ADDRESS=message_router
+      - MESSAGE_ROUTER_PORT=5000
+    volumes:
+      - "./microservices/routes_microservice/code:/etc/usr/src/app"
+    depends_on:
+      - db_service
