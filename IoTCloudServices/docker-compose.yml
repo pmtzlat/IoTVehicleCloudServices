@@ -17,7 +17,13 @@ services:
       - VEHICLES_MICROSERVICE_PORT=5001
       - TELEMETRY_MICROSERVICE_ADDRESS=telemetry_microservice
       - TELEMETRY_MICROSERVICE_PORT=5002
+      - TELEMETRY_MICROSERVICE_ADDRESS=routes_microservice
+      - TELEMETRY_MICROSERVICE_PORT=5003
       - PYTHONUNBUFFERED=1
+      - HOST=0.0.0.0
+      - PORT=5000
+    ports:
+      - '5000:5000'
     volumes:
       - "./message_router/code:/etc/usr/src/app"
     depends_on:

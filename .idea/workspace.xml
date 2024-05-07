@@ -4,29 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10bb1776-b6df-4ad9-9cf7-ff982d6a7fdb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/IoTCloudServices/db_service/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IoTCloudServices/db_service/initial_script.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IoTCloudServices/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IoTCloudServices/message_router/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IoTCloudServices/message_router/code/message_router.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IoTCloudServices/message_router/code/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IoTCloudServices/message_router/code/telemetry_register_interface.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IoTCloudServices/message_router/code/vehicle_register_interface.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IoTCloudServices/microservices/telemetry_microservice/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IoTCloudServices/microservices/telemetry_microservice/code/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IoTCloudServices/microservices/telemetry_microservice/code/telemetry_db_manager.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IoTCloudServices/microservices/telemetry_microservice/code/telemetry_manager_api.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IoTCloudServices/microservices/vehicles_microservice/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IoTCloudServices/microservices/vehicles_microservice/code/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IoTCloudServices/microservices/vehicles_microservice/code/vehicles_db_manager.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IoTCloudServices/microservices/vehicles_microservice/code/vehicles_manager_api.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IoTCloudServices/mosquitto/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IoTCloudServices/mosquitto/code/mosquitto.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/VirtualVehicles/VehicleDigitalTwin/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/VirtualVehicles/VehicleDigitalTwin/code/VehicleDigitalTwin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/VirtualVehicles/VehicleDigitalTwin/code/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/VirtualVehicles/docker-compose.yml" afterDir="false" />
+    <list default="true" id="10bb1776-b6df-4ad9-9cf7-ff982d6a7fdb" name="Changes" comment="Archivos de Sara incorporados.">
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IoTCloudServices/message_router/code/routes_api_operations_interface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IoTCloudServices/db_service/initial_script.sql" beforeDir="false" afterPath="$PROJECT_DIR$/IoTCloudServices/db_service/initial_script.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IoTCloudServices/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/IoTCloudServices/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IoTCloudServices/message_router/code/message_router.py" beforeDir="false" afterPath="$PROJECT_DIR$/IoTCloudServices/message_router/code/message_router.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IoTCloudServices/message_router/code/vehicle_register_interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/IoTCloudServices/message_router/code/vehicle_api_operations_interface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IoTCloudServices/microservices/routes_microservice/code/routes_db_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/IoTCloudServices/microservices/routes_microservice/code/routes_db_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IoTCloudServices/microservices/routes_microservice/code/routes_manager_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/IoTCloudServices/microservices/routes_microservice/code/routes_manager_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IoTCloudServices/microservices/vehicles_microservice/code/vehicles_db_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/IoTCloudServices/microservices/vehicles_microservice/code/vehicles_db_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IoTCloudServices/microservices/vehicles_microservice/code/vehicles_manager_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/IoTCloudServices/microservices/vehicles_microservice/code/vehicles_manager_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VirtualVehicles/VehicleDigitalTwin/code/VehicleDigitalTwin.py" beforeDir="false" afterPath="$PROJECT_DIR$/VirtualVehicles/VehicleDigitalTwin/code/VehicleDigitalTwin.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +38,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/Users/pablo/PycharmProjects/fic-sesion11",
     "node.js.detected.package.eslint": "true",
@@ -61,6 +52,10 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\pablo\PycharmProjects\fic-sesion11" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\pablo\PycharmProjects\fic-sesion11\IoTCloudServices\microservices" />
+      <recent name="C:\Users\pablo\PycharmProjects\fic-sesion11\IoTCloudServices\microservices\routes_microservice" />
     </key>
   </component>
   <component name="RunManager">
@@ -103,8 +98,25 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1712227477387</updated>
-      <workItem from="1715027573495" duration="326000" />
+      <workItem from="1715027573495" duration="8784000" />
     </task>
+    <task id="LOCAL-00001" summary="Archivos de Sara incorporados.">
+      <option name="closed" value="true" />
+      <created>1715028216966</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1715028216966</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Archivos de Sara incorporados.">
+      <option name="closed" value="true" />
+      <created>1715028277998</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1715028277998</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -120,5 +132,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Archivos de Sara incorporados." />
+    <option name="LAST_COMMIT_MESSAGE" value="Archivos de Sara incorporados." />
   </component>
 </project>

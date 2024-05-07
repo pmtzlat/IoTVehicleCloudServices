@@ -13,12 +13,13 @@ def connect_database():
     )
     return mydb
 
-def get_routes_assigned_to_vehicle(params):
+
+def get_routes_assigned_to_vehicle(params, app):
     result = []
     try:
         mydb = connect_database()
         with mydb.cursor() as cursor:
-            sql = """SELECT origin, destination, plate, time_stamp 
+            sql = """SELECT origin, destination, plate, time_stamp, completed
                 FROM routes 
                 WHERE plate = %s 
                 ORDER BY time_stamp DESC"""
@@ -26,34 +27,68 @@ def get_routes_assigned_to_vehicle(params):
             query_params = (vehicle_plate,)
             cursor.execute(sql, query_params)
             my_result = cursor.fetchall()
-            for origin, destination, plate, time_stamp in my_result:
-                item = {"Origin": origin, "Destination": destination, "Plate": plate,
-                        "Time Stamp": time_stamp}
+            for origin, destination, plate, time_stamp, completed in my_result:
+                item = {"Origin": origin, "Destination": destination, "plate": plate, "completed": completed,
+                        "time_stamp": time_stamp}
                 result.append(item)
         return result
     except Exception as e:
-        print("Error getting the routes assigned to this plate: ", vehicle_plate)
+        app.logger.debug("Error getting the routes assigned to this plate: ", vehicle_plate)
         return None
 
 
-def assign_new_route(params):
+def assign_new_route(params, app):
+    try:
+        mydb = connect_database()
+        with mydb.cursor() as cursor:
+            # Check if there is a route with the same plate and completed = 0
+            check_sql = "SELECT * FROM routes WHERE plate = %s AND completed = 0"
+            cursor.execute(check_sql, (params["vehicle_plate"],))
+            existing_route = cursor.fetchone()
+            if existing_route:
+                app.logger.debug("Plate is currently assigned to a route")
+                return 0  # Indicates that the route was not assigned due to conflict
+
+            # If no conflicting route found, insert the new route
+            insert_sql = """
+                INSERT INTO routes (origin, destination, plate, time_stamp, completed) 
+                VALUES (%s, %s, %s, %s, 0)
+            """
+            vehicle_plate = params["vehicle_plate"]
+            origin = params["origin"]
+            destination = params["destination"]
+            time_stamp = datetime.datetime.now()
+            tuples = (origin, destination, vehicle_plate, time_stamp)
+            cursor.execute(insert_sql, tuples)
+            mydb.commit()
+            app.logger.debug(cursor.rowcount, "Route inserted.")
+            return 1
+    except Exception as e:
+        app.logger.debug("ERROR on route insertion!" + str(e))
+        app.logger.debug(params)
+        return -1
+
+
+def complete_route(params, app):
     result = True
     try:
         mydb = connect_database()
         with mydb.cursor() as cursor:
-            sql = """INSERT INTO vehicles_telemetry (origin, destination, plate, time_stamp) 
-                VALUES( % s, %s, %s, %s)"""
-        vehicle_plate = params["vehicle_plate"]
-        origin = params["origin"]
-        destination = params["destination"]
-        time_stamp = datetime.datetime.now()
-        tuples = (vehicle_plate, origin, destination, time_stamp)
-        cursor.execute(sql, tuples)
-        mydb.commit()
-        print(cursor.rowcount, "Route inserted.")
-        return result
+
+            update_sql = """
+                            UPDATE routes SET completed = 1 WHERE plate = %s
+                        """
+            vehicle_plate = params["vehicle_plate"]
+            cursor.execute(update_sql)
+            mydb.commit()
+
+            app.logger.debug("Success completing route")
+
+
+
     except Exception as e:
-        print("ERROR on route insertion!" + str(e))
-        print(params)
+        app.logger.debug("ERROR on route insertion!" + str(e))
+        app.logger.debug(params)
         result = False
-        return result
+
+    return result

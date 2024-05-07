@@ -35,6 +35,28 @@ def get_vehicle_plate(vehicle_id):
         return ""
 
 
+def delete_vehicle(vehicle_id, plate, app):
+    try:
+        app.logger.debug('Deleting vehicle...')
+        mydb = connect_database()
+
+        with mydb.cursor() as mycursor:
+
+            mycursor.execute(
+                'DELETE FROM vehicles WHERE plate = %s', (plate))
+            mycursor.execute(
+                'UPDATE available_plates SET is_assigned = 0 WHERE plate = %s', (plate)
+            )
+            mycursor.execute(
+                'UPDATE routes SET completed = -1 WHERE plate = %s AND completed = 0', (plate)
+            )
+            mydb.commit()
+            return True
+
+    except Exception as e:
+        app.logger.debug(f'Error deleting vehicle id {vehicle_id}: {e}')
+        return False
+
 def register_new_vehicle(vehicle_id, app):
     try:
         app.logger.debug('Registering new vehicle in db...')
@@ -57,6 +79,7 @@ def register_new_vehicle(vehicle_id, app):
                 mycursor.execute('INSERT INTO vehicles (vehicle_id, plate) VALUES (%s, %s);',
                                  (vehicle_id, available_plate[0]))
                 mycursor.execute('UPDATE available_plates SET is_assigned = 1 WHERE plate = %s;', (available_plate[0],))
+                mycursor.execute('UPDATE vehicles SET status = 1 WHERE plate = %s;', (available_plate[0],))
                 mydb.commit()
                 return available_plate[0]
             else:

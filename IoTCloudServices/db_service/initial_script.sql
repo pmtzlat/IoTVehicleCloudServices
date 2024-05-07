@@ -124,6 +124,7 @@ CREATE TABLE routes
     destination varchar(100) NOT NULL,
     plate       varchar(7),
     time_stamp  timestamp    NOT NULL,
+    completed   TINYINT,
     PRIMARY KEY (id),
     FOREIGN KEY (plate) REFERENCES available_plates (plate) ON DELETE CASCADE ON UPDATE CASCADE
 );

@@ -31,6 +31,28 @@ def register_new_vehicle():
         return {"Plate": None}, 500
 
 
+@app.route('/vehicles/delete/', methods=['POST'])
+def register_new_vehicle():
+    vehicle_data = request.get_json()
+    app.logger.debug(f'Vehicle data received: {vehicle_data}')
+
+    if not vehicle_data or (('vehicle_id' or 'plate') not in vehicle_data):
+        return {"result": "Error: Wrong data structure"}, 400
+
+    vehicle_id = vehicle_data['vehicle_id']
+    plate = vehicle_data['plate']
+    app.logger.debug('Deleting vehicle with id {}'.format(vehicle_id))
+    result = vehicles_db_manager.delete_vehicle(vehicle_id, plate, app)
+
+    if result:
+        plate = vehicles_db_manager.get_vehicle_plate(vehicle_id)[0]
+        app.logger.debug('Success!')
+
+    else:
+        app.logger.debug('Error in deleting plate.')
+
+
+
 @app.route('/vehicles/retrieve/', methods=['GET'])
 def retrieve_vehicles():
     active_vehicles = vehicles_db_manager.get_active_vehicles()

@@ -1,0 +1,15 @@
+import requests
+import os
+
+def assign_route(data):
+     host = os.getenv('VEHICLES_MICROSERVICE_ADDRESS')
+     port = os.getenv('VEHICLES_MICROSERVICE_PORT')
+     return requests.post('http://' + host + ':' + port +
+    '/routes/register', json=data)
+
+def complete_route(data):
+     host = os.getenv('VEHICLES_MICROSERVICE_ADDRESS')
+     port = os.getenv('VEHICLES_MICROSERVICE_PORT')
+     requests.post('http://' + host + ':' + port +
+    '/routes/complete', json=data)
+

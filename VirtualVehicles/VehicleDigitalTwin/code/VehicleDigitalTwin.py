@@ -578,7 +578,7 @@ def on_connect(client, userdata, flags, rc):
 
     if rc == 0:
         PLATE_ASSIGNMENT_TOPIC = "/fic/vehicles/" + get_host_name() + "/plate_assignment"
-        ROUTE_ASSIGNMENT_TOPIC = "/fic/vehicles/" + get_host_name() + "/route_assignment"
+
         print("Connected to MQTT Broker!")
         PLATE_REQUEST_TOPIC = "/fic/vehicles/" + get_host_name() + "/plate_request"
         payload = {"vehicle_id": get_host_name()}
@@ -586,8 +586,7 @@ def on_connect(client, userdata, flags, rc):
                        qos=1, retain=False)
         print(f"Subscribed to {PLATE_ASSIGNMENT_TOPIC}")
         client.subscribe(PLATE_ASSIGNMENT_TOPIC)
-        print(f"Subscribed to {ROUTE_ASSIGNMENT_TOPIC}")
-        client.subscribe(ROUTE_ASSIGNMENT_TOPIC)
+
 
     else:
         print(f"Connection failed with result code {rc}")
@@ -607,6 +606,9 @@ def on_message(client, userdata, msg):
         if json_config_received["Plate"] != "Not Available":
             vehicle_plate = json_config_received["Plate"]
             print(f'Plate assigned: {vehicle_plate}')
+            ROUTE_ASSIGNMENT_TOPIC = "/fic/vehicles/" + vehicle_plate + "/route_assignment"
+            print(f"Subscribed to {ROUTE_ASSIGNMENT_TOPIC}")
+            client.subscribe(ROUTE_ASSIGNMENT_TOPIC)
 
     elif topic[-1] == "route_assignment":
         required_route = json.loads(msg.payload.decode())
@@ -658,13 +660,12 @@ def mqtt_communications():
     client.username_pw_set(username="fic_server", password="fic_password")
     client.on_connect = on_connect
     client.on_message = on_message
-    connection_dict = {"vehicle_plate": vehicle_plate, "status":
-        "Off - Unregular Diconnection",
-                       "time_stamp": datetime.now().isoformat()}
-    STATE_TOPIC = "/fic/vehicles/" + get_host_name() + "/car_state"
-    connection_dict["time_stamp"] = str(connection_dict["time_stamp"])
+    event_message = "Vehicle Disconnected"
+    connection_dict = {"vehicle_id": get_host_name(), "Plate": vehicle_plate, "Event": event_message,
+     "time_stamp": str(datetime.now().isoformat())}
+    CLIENT_NOTIFICATIONS_TOPIC = "/fic/vehicles/" + get_host_name() + "/client_notifications"
     connection_str = json.dumps(connection_dict)
-    client.will_set(STATE_TOPIC, connection_str)
+    client.will_set(CLIENT_NOTIFICATIONS_TOPIC, connection_str)
     MQTT_SERVER = os.getenv("MQTT_SERVER_ADDRESS")
     MQTT_PORT = int(os.getenv("MQTT_SERVER_PORT"))
     print(f'mqtt ip: {MQTT_SERVER}, port: {MQTT_PORT}')
