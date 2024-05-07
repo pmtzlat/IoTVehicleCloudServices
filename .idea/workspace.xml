@@ -4,19 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10bb1776-b6df-4ad9-9cf7-ff982d6a7fdb" name="Changes" comment="Archivos de Sara incorporados.">
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IoTCloudServices/message_router/code/routes_api_operations_interface.py" afterDir="false" />
+    <list default="true" id="10bb1776-b6df-4ad9-9cf7-ff982d6a7fdb" name="Changes" comment="version inicial creada">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IoTCloudServices/db_service/initial_script.sql" beforeDir="false" afterPath="$PROJECT_DIR$/IoTCloudServices/db_service/initial_script.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IoTCloudServices/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/IoTCloudServices/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IoTCloudServices/message_router/code/message_router.py" beforeDir="false" afterPath="$PROJECT_DIR$/IoTCloudServices/message_router/code/message_router.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IoTCloudServices/message_router/code/vehicle_register_interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/IoTCloudServices/message_router/code/vehicle_api_operations_interface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IoTCloudServices/message_router/code/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/IoTCloudServices/message_router/code/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IoTCloudServices/message_router/code/routes_api_operations_interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/IoTCloudServices/message_router/code/routes_api_operations_interface.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IoTCloudServices/microservices/routes_microservice/code/routes_db_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/IoTCloudServices/microservices/routes_microservice/code/routes_db_manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IoTCloudServices/microservices/routes_microservice/code/routes_manager_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/IoTCloudServices/microservices/routes_microservice/code/routes_manager_api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IoTCloudServices/microservices/vehicles_microservice/code/vehicles_db_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/IoTCloudServices/microservices/vehicles_microservice/code/vehicles_db_manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IoTCloudServices/microservices/vehicles_microservice/code/vehicles_manager_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/IoTCloudServices/microservices/vehicles_microservice/code/vehicles_manager_api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VirtualVehicles/VehicleDigitalTwin/code/VehicleDigitalTwin.py" beforeDir="false" afterPath="$PROJECT_DIR$/VirtualVehicles/VehicleDigitalTwin/code/VehicleDigitalTwin.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,29 +22,29 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2edHLJKD2vw234YP8W4GVdY5d7Z" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/pablo/PycharmProjects/fic-sesion11",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/pablo/PycharmProjects/fic-sesion11&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\pablo\PycharmProjects\fic-sesion11" />
@@ -98,7 +94,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1712227477387</updated>
-      <workItem from="1715027573495" duration="8784000" />
+      <workItem from="1715027573495" duration="12819000" />
+      <workItem from="1715093870848" duration="2035000" />
     </task>
     <task id="LOCAL-00001" summary="Archivos de Sara incorporados.">
       <option name="closed" value="true" />
@@ -116,7 +113,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715028277998</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="version inicial creada">
+      <option name="closed" value="true" />
+      <created>1715076511314</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1715076511314</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -135,6 +140,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Archivos de Sara incorporados." />
-    <option name="LAST_COMMIT_MESSAGE" value="Archivos de Sara incorporados." />
+    <MESSAGE value="version inicial creada" />
+    <option name="LAST_COMMIT_MESSAGE" value="version inicial creada" />
   </component>
 </project>

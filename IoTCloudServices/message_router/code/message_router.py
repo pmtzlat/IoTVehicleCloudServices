@@ -28,19 +28,21 @@ global CLIENT_NOTIFICATIONS_TOPIC, ROUTE_ASSIGNMENT_TOPIC, client
 
 @app.route('/routes/send', methods=['POST'])
 def send_route():
+    app.logger.debug("Sending route...")
     params = request.get_json()
-    plate = params.get("plate")
-    origin = params.get("origin")
-    destination = params.get("destination")
+    app.logger.debug("Sending route...")
+    plate = params.get("vehicle_plate")
+    origin = params.get("Origin")
+    destination = params.get("Destination")
 
     if not (plate and origin and destination):
         return jsonify({"error": "Missing parameters"}), 400
 
-    route = {"Origin": origin, "Destination": destination, "plate": plate}
+    route = {"Origin": origin, "Destination": destination, "vehicle_plate": plate}
     assign_result = assign_route(route)
-    if assign_result.json().get('result') == "Vehicle busy":
+    if assign_result.json().get('result') == "Vehicle busy or plate is not assigned a vehicle":
         app.logger.info("Error assigning route")
-        return jsonify({"Result": "Vehicle busy"}), 202
+        return jsonify({"Result": "Vehicle busy or plate is not assigned a vehicle"}), 202
     elif assign_result.json().get('result') != "Route assigned":
         app.logger.info("Error assigning route")
         return jsonify({"Result": "Route could not be sent"}), 500
@@ -151,7 +153,6 @@ def mqtt_listener():
 
 
 if __name__ == '__main__':
-    global client
     # MQTT_SERVER = os.getenv("MQTT_SERVER_ADDRESS")
     # MQTT_PORT = int(os.getenv("MQTT_SERVER_PORT"))
     # schedule_route_assignment()

@@ -32,7 +32,7 @@ def register_new_vehicle():
 
 
 @app.route('/vehicles/delete/', methods=['POST'])
-def register_new_vehicle():
+def delete_vehicle():
     vehicle_data = request.get_json()
     app.logger.debug(f'Vehicle data received: {vehicle_data}')
 

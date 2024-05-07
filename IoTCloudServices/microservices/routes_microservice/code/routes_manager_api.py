@@ -32,8 +32,8 @@ def assign_routes():
         return {"result": "Route assigned"}, 201
 
     if result == 0:
-        app.logger.debug('Vehicle is already assigned a route')
-        return {"result": "Vehicle busy"}, 202
+        app.logger.debug('Plate is already assigned a route, or plate is not assigned a vehicle')
+        return {"result": "Vehicle busy or plate is not assigned a vehicle"}, 202
 
     else:
         app.logger.debug('Route assignment NOT successful')

@@ -5,7 +5,7 @@ import mysql.connector as mysql
 
 
 def connect_database():
-    mydb = mysql.connector.connect(
+    mydb = mysql.connect(
         host=os.getenv('DBHOST'),
         user=os.getenv('DBUSER'),
         password=os.getenv('DBPASSWORD'),
@@ -42,6 +42,12 @@ def assign_new_route(params, app):
         mydb = connect_database()
         with mydb.cursor() as cursor:
             # Check if there is a route with the same plate and completed = 0
+            check_sql = "SELECT * FROM available_plates WHERE plate = %s AND is_assigned = 1"
+            cursor.execute(check_sql, (params["vehicle_plate"],))
+            assigned_plate = cursor.fetchone()
+            if not assigned_plate:
+                app.logger.debug("Plate is not assigned to a vehicle")
+                return 0
             check_sql = "SELECT * FROM routes WHERE plate = %s AND completed = 0"
             cursor.execute(check_sql, (params["vehicle_plate"],))
             existing_route = cursor.fetchone()
@@ -55,8 +61,8 @@ def assign_new_route(params, app):
                 VALUES (%s, %s, %s, %s, 0)
             """
             vehicle_plate = params["vehicle_plate"]
-            origin = params["origin"]
-            destination = params["destination"]
+            origin = params["Origin"]
+            destination = params["Destination"]
             time_stamp = datetime.datetime.now()
             tuples = (origin, destination, vehicle_plate, time_stamp)
             cursor.execute(insert_sql, tuples)
