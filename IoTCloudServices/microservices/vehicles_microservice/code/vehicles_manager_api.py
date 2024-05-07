@@ -47,6 +47,7 @@ def delete_vehicle():
     if result:
         plate = vehicles_db_manager.get_vehicle_plate(vehicle_id)[0]
         app.logger.debug('Success!')
+        return
 
     else:
         app.logger.debug('Error in deleting plate.')
