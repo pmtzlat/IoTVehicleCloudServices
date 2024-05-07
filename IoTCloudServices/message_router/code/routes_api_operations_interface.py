@@ -11,5 +11,5 @@ def complete_route(data):
      host = os.getenv('VEHICLES_MICROSERVICE_ADDRESS')
      port = os.getenv('VEHICLES_MICROSERVICE_PORT')
      requests.post('http://' + host + ':' + port +
-    '/routes/complete', json=data)
+    '/routes/complete/', json=data)
 
