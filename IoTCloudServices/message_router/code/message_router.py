@@ -101,7 +101,7 @@ def on_message(client, userdata, msg):
 
     # caso en el que el coche envia el mensaje de que ha completado la ruta - el topic se llamará 'client_notifications'
     elif topic[-1] == "client_notifications":
-        #print('Received client notification!')
+
         route_completion_info = json.loads(msg.payload.decode())
 
         # my payload format: {"ID": "foo", "Plate": "1234BBC", "Event": "Route Completed", "Timestamp": 1703593978}
@@ -110,6 +110,7 @@ def on_message(client, userdata, msg):
         plate = route_completion_info['Plate']
         event = route_completion_info['Event']
         timestamp = route_completion_info['time_stamp']
+        print('Received client notification! ', event)
 
         if event == "Vehicle Disconnected":
             if deleteVehicle(vehicle_id, plate):
