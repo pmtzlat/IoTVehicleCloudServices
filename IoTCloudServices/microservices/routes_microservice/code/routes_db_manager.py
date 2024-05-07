@@ -67,7 +67,7 @@ def assign_new_route(params, app):
             tuples = (origin, destination, vehicle_plate, time_stamp)
             cursor.execute(insert_sql, tuples)
             mydb.commit()
-            app.logger.debug(cursor.rowcount, "Route inserted.")
+            app.logger.debug("Route inserted.")
             return 1
     except Exception as e:
         app.logger.debug("ERROR on route insertion!" + str(e))
@@ -82,10 +82,10 @@ def complete_route(params, app):
         with mydb.cursor() as cursor:
 
             update_sql = """
-                            UPDATE routes SET completed = 1 WHERE plate = %s
+                            UPDATE routes SET completed = 1 WHERE plate = %s AND completed = 0
                         """
             vehicle_plate = params["vehicle_plate"]
-            cursor.execute(update_sql)
+            cursor.execute(update_sql, (vehicle_plate, ))
             mydb.commit()
 
             app.logger.debug("Success completing route")
@@ -93,7 +93,7 @@ def complete_route(params, app):
 
 
     except Exception as e:
-        app.logger.debug("ERROR on route insertion!" + str(e))
+        app.logger.debug("ERROR completing route:" + str(e))
         app.logger.debug(params)
         result = False
 
