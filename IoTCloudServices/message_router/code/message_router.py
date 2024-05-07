@@ -15,16 +15,9 @@ app = Flask(__name__)
 app.logger.setLevel(logging.DEBUG)
 CORS(app)
 
-global connected_vehicles, available_plates, STATE_TOPIC, PLATE_REQUEST_TOPIC, pois
+global  available_plates, STATE_TOPIC, PLATE_REQUEST_TOPIC, pois
 global CLIENT_NOTIFICATIONS_TOPIC, ROUTE_ASSIGNMENT_TOPIC, client
 
-
-# connected_vehicles tiene que guardar vehiculos de esta forma:
-# connected_vehicles = {'<id>': {'Plate': '0000BBB', 'Route': {'Origin': 'Getafe', 'Destination': 'Mostoles'} } }
-# o de esta:
-# connected_vehicles = [ {'id': 'foo', 'Plate': '0000BBB', 'Route': {'Origin': 'Getafe', 'Destination': 'Mostoles'} }
-# (prefiero la primera)
-# si un coche no tiene ruta asignada, no tiene la key 'Route'
 
 @app.route('/routes/send', methods=['POST'])
 def send_route():
@@ -73,7 +66,7 @@ def on_connect(client, userdata, flags, rc):
 
 
 def on_message(client, userdata, msg):
-    global index_vehicle, connected_vehicles, available_plates
+    global index_vehicle, available_plates
 
     topic = msg.topic.split('/')
     print(f'Message received: {topic[-1]}')
@@ -94,8 +87,7 @@ def on_message(client, userdata, msg):
 
         print(vehicle_plate)
         plate_json = '{"Plate": "' + vehicle_plate + '"}'
-        print(f'Publishing plate {vehicle_plate} to topic /fic/vehicles/{vehicle_id}/plate_assignment'
-              f'\nConnected vehicles: {connected_vehicles}')
+        print(f'Publishing plate {vehicle_plate} to topic /fic/vehicles/{vehicle_id}/plate_assignment')
         client.publish("/fic/vehicles/" + vehicle_id + "/plate_assignment", payload=plate_json, qos=1,
                        retain=False)
 
