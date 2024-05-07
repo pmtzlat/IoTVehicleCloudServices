@@ -6,13 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="10bb1776-b6df-4ad9-9cf7-ff982d6a7fdb" name="Changes" comment="version inicial creada">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IoTCloudServices/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/IoTCloudServices/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IoTCloudServices/message_router/code/message_router.py" beforeDir="false" afterPath="$PROJECT_DIR$/IoTCloudServices/message_router/code/message_router.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IoTCloudServices/message_router/code/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/IoTCloudServices/message_router/code/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IoTCloudServices/message_router/code/routes_api_operations_interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/IoTCloudServices/message_router/code/routes_api_operations_interface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IoTCloudServices/microservices/routes_microservice/code/routes_db_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/IoTCloudServices/microservices/routes_microservice/code/routes_db_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IoTCloudServices/microservices/routes_microservice/code/routes_manager_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/IoTCloudServices/microservices/routes_microservice/code/routes_manager_api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IoTCloudServices/microservices/vehicles_microservice/code/vehicles_manager_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/IoTCloudServices/microservices/vehicles_microservice/code/vehicles_manager_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VirtualVehicles/VehicleDigitalTwin/code/VehicleDigitalTwin.py" beforeDir="false" afterPath="$PROJECT_DIR$/VirtualVehicles/VehicleDigitalTwin/code/VehicleDigitalTwin.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +89,7 @@
       <option name="presentableId" value="Default" />
       <updated>1712227477387</updated>
       <workItem from="1715027573495" duration="12819000" />
-      <workItem from="1715093870848" duration="2035000" />
+      <workItem from="1715093870848" duration="7253000" />
     </task>
     <task id="LOCAL-00001" summary="Archivos de Sara incorporados.">
       <option name="closed" value="true" />
@@ -121,7 +115,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715076511314</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="version inicial creada">
+      <option name="closed" value="true" />
+      <created>1715095985537</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1715095985537</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

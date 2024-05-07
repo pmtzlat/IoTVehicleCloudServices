@@ -91,7 +91,7 @@ def get_detailed_steps(steps):
 
     # Iteración sobre los pasos de la ruta a seguir por el vehículo
     for idx, step in enumerate(steps, start=1):
-        print("Step duration: ", step["duration"]["value"])
+        #print("Step duration: ", step["duration"]["value"])
         if step["duration"]["value"] == 0:
             step["duration"]["value"] = 1
         stepSpeed = (step["distance"]["value"] / 1000) / (step["duration"]["value"] / 3600)  # Velocidad en km/h
@@ -635,6 +635,7 @@ def getVehicleStatus():
 
 def publish_telemetry(client):
     global STATE_TOPIC
+    STATE_TOPIC = "/fic/vehicles/" + get_host_name() + "/car_state"
     vehicle_status = getVehicleStatus()
     json_telemetry = json.dumps(vehicle_status)
     client.publish(STATE_TOPIC, payload=json_telemetry, qos=1,
@@ -643,7 +644,7 @@ def publish_telemetry(client):
 
 def publish_event(client):
     global CLIENT_NOTIFICATIONS_TOPIC, vehicle_plate, event_message
-
+    print('Sending event: ', event_message)
     CLIENT_NOTIFICATIONS_TOPIC = "/fic/vehicles/" + get_host_name() + "/client_notifications"
     lock.acquire()
     event_to_send = {"vehicle_id": get_host_name(), "Plate": vehicle_plate, "Event": event_message,
