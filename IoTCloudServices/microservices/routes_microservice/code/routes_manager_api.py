@@ -44,7 +44,6 @@ def retrieve_routes():
     params = request.get_json()
     app.logger.debug(params)
     result = routes_db_manager.get_routes_assigned_to_vehicle(params, app)
-    app.logger.debug('Result: '+ result)
     return result
 
 if __name__ == '__main__':

@@ -82,7 +82,7 @@ def on_message(client, userdata, msg):
         vehicle_plate = json.loads(response.text)['Plate']
 
         if vehicle_plate is None:
-            print('No plate available')
+            print('No plate available', vehicle_plate)
             return
 
         print(vehicle_plate)
