@@ -43,8 +43,9 @@ def delete_vehicle(vehicle_id, app):
         with mydb.cursor() as mycursor:
 
             plate = get_vehicle_plate(vehicle_id)
+            plate = plate[0]
             app.logger.debug('Plate:')
-            app.logger.debug(str(plate))
+            app.logger.debug(plate)
 
             mycursor.execute(
                 'DELETE FROM vehicles WHERE plate = %s;', (plate, ))
