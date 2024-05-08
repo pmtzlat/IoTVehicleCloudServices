@@ -113,6 +113,7 @@ def on_message(client, userdata, msg):
         print('Received client notification! ', event)
 
         if event == "Vehicle Disconnected":
+            print("Plate: ", plate)
             if deleteVehicle(vehicle_id, plate):
                 print(f'Vehicle {vehicle_id} has disconnected and been deleted successfully.')
 
