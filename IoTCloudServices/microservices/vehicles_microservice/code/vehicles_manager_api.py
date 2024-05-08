@@ -40,9 +40,8 @@ def delete_vehicle():
         return {"result": "Error: Wrong data structure"}, 400
 
     vehicle_id = vehicle_data['vehicle_id']
-    plate = vehicle_data['plate']
     app.logger.debug('Deleting vehicle with id {}'.format(vehicle_id))
-    result = vehicles_db_manager.delete_vehicle(vehicle_id, plate, app)
+    result = vehicles_db_manager.delete_vehicle(vehicle_id, app)
 
     if result:
         plate = vehicles_db_manager.get_vehicle_plate(vehicle_id)[0]
