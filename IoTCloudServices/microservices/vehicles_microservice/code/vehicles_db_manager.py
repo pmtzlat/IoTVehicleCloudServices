@@ -44,12 +44,15 @@ def delete_vehicle(vehicle_id, plate, app):
 
             mycursor.execute(
                 'DELETE FROM vehicles WHERE plate = %s', (plate))
+            app.logger.debug('Deleted vehicle')
             mycursor.execute(
                 'UPDATE available_plates SET is_assigned = 0 WHERE plate = %s', (plate)
             )
+            app.logger.debug('Set plate as available')
             mycursor.execute(
                 'UPDATE routes SET completed = -1 WHERE plate = %s AND completed = 0', (plate)
             )
+            app.logger.debug('Updated routes table')
             mydb.commit()
             return True
 

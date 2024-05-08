@@ -50,8 +50,8 @@ def delete_vehicle():
         return {"result": "Success!"}, 201
 
     else:
-        app.logger.debug('Error in deleting plate.')
-        return {"result": "Error deleting plate"}, 500
+        app.logger.debug('Error in deleting vehicle.')
+        return {"result": "Error deleting vehicle"}, 500
 
 
 
