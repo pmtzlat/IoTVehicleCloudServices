@@ -8,8 +8,8 @@ def assign_route(data):
     '/routes/assign', json=data)
 
 def complete_route(data):
-     host = os.getenv('VEHICLES_MICROSERVICE_ADDRESS')
-     port = os.getenv('VEHICLES_MICROSERVICE_PORT')
+     host = os.getenv('ROUTES_MICROSERVICE_ADDRESS')
+     port = os.getenv('ROUTES_MICROSERVICE_PORT')
      requests.post('http://' + host + ':' + port +
     '/routes/complete/', json=data)
 
