@@ -125,7 +125,7 @@ def on_message(client, userdata, msg):
 
 
 def deleteVehicle(vehicle_id, plate):
-    request_data = {"vehicle_id": vehicle_id, "plate": plate}
+    request_data = {"vehicle_id": vehicle_id}
     return delete_vehicle(request_data)
 
 

@@ -35,12 +35,14 @@ def get_vehicle_plate(vehicle_id):
         return ""
 
 
-def delete_vehicle(vehicle_id, plate, app):
+def delete_vehicle(vehicle_id, app):
     try:
         app.logger.debug('Deleting vehicle...')
         mydb = connect_database()
 
         with mydb.cursor() as mycursor:
+
+            plate = get_vehicle_plate(vehicle_id)
 
             mycursor.execute(
                 'DELETE FROM vehicles WHERE plate = %s;', (plate, ))
