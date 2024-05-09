@@ -65,7 +65,7 @@ def routes_manager(origin_address="Toronto", destination_address="Montreal"):
     global currentRouteDetailedSteps
     global vehicleControlCommands
 
-    google_maps_api_key = "AIzaSyCCPgOomH8zSoErdqUKlOcb5Jf1BtThREk"
+    google_maps_api_key = ""
     # print("Asignando una ruta al vehiculo")
     url = "https://maps.googleapis.com/maps/api/directions/json?origin=" + origin_address + "&destination=" + \
           destination_address + "&key=" + google_maps_api_key
